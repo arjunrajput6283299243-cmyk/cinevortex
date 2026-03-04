@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - CineVortex</title>
+</head>
+<body style="background:#141414;color:white;font-family:Arial;padding:20px">
+
+<h2>Add Movie</h2>
+
+<input type="text" id="title" placeholder="Movie Title"><br><br>
+<input type="text" id="poster" placeholder="Poster URL"><br><br>
+<input type="text" id="video" placeholder="Video URL (MP4 Link)"><br><br>
+
+<button onclick="addMovie()">Upload</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "PASTE_YOUR_KEY",
+  authDomain: "PASTE",
+  projectId: "PASTE",
+  storageBucket: "PASTE",
+  messagingSenderId: "PASTE",
+  appId: "PASTE"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.addMovie = async function(){
+  let title = document.getElementById("title").value;
+  let poster = document.getElementById("poster").value;
+  let video = document.getElementById("video").value;
+
+  await addDoc(collection(db, "movies"), {
+    title: title,
+    poster: poster,
+    video: video
+  });
+
+  alert("Movie Uploaded!");
+}
+</script>
+
+</body>
+</html>

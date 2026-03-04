@@ -1,0 +1,31 @@
+body {
+  background:#141414;
+  color:white;
+  font-family:Arial;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  background:black;
+}
+
+h1 {
+  color:red;
+}
+
+.movies {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  padding:20px;
+}
+
+.movie-card {
+  transition:0.3s;
+}
+
+.movie-card:hover {
+  transform:scale(1.1);
+}
